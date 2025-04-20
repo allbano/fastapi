@@ -38,10 +38,10 @@ taskipy = "^1.14.1"
 ruff = "^0.11.6"
 
 [tool.taskipy.tasks]
-lint = 'ruff check'
-pre_format = 'ruff check --fix'
-format = 'ruff format'
 run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
+lint = 'ruff check . ; ruff check . --diff'
+pre_format = 'ruff check --fix'
+format = 'ruff check --fix ; ruff format .'
